@@ -35,21 +35,21 @@ export default function Navbar() {
 
   return (
     <div>
-      <div>
-        <nav className="flex items-center justify-between mt-2 bg-white shadow-none">
+      <div className=" bg-white shadow-none">
+        <nav className="flex flex-wrap items-center justify-between gap-4 md:gap-0">
           {/* Company Dropdown */}
           <div className="flex-shrink-0">
-            <Card className="w-[250px] shadow-none border-none">
-              <CardContent className="p-2"> {/* Reduced padding */}
+            <Card className="w-[200px] md:w-[250px] shadow-none border-none">
+              <CardContent className="p-2">
                 <form>
-                  <div className="grid items-center gap-1"> {/* Reduced spacing */}
+                  <div className="grid items-center gap-1">
                     <div className="flex flex-col space-y-1">
-                      <Label htmlFor="framework" className="text-xs font-semibold">
-                        Company name
+                      <Label htmlFor="company" className="text-xs font-semibold">
+                        Company Name
                       </Label>
                       <Select>
-                        <SelectTrigger id="framework" className="border-none p-1 h-8 text-sm"> {/* Adjusted padding & height */}
-                          <SelectValue placeholder="Work space" />
+                        <SelectTrigger id="company" className="border-none p-1 h-8 text-sm">
+                          <SelectValue placeholder="Workspace" />
                         </SelectTrigger>
                         <SelectContent position="popper">
                           <SelectItem value="next">Next.js</SelectItem>
@@ -65,75 +65,72 @@ export default function Navbar() {
             </Card>
           </div>
 
-          {/* First Vertical Line After First Select (closer) */}
-          <div className="border-l border-gray-200 h-12 mx-2" /> {/* Reduced mx-4 to mx-2 */}
+          {/* First Divider */}
+          <div className="hidden md:block border-l border-gray-200 h-12 mx-2" />
 
           {/* Search Input */}
-          <div className="flex-1 max-w-md relative mx-8">
+          <div className="flex-1 relative mx-2 md:mx-8 w-full md:max-w-md">
             <Input
               placeholder="Search for invoice or customer"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 text-left border-0 focus:ring-0"
+              className="w-full pl-10 border-0 focus:ring-0 rounded-md"
             />
-            <Search className="absolute top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Search className="absolute top-1/2 left-3 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
           </div>
 
-          {/* Second Vertical Line Before Second Select */}
-          <div className="flex items-center space-x-6">
-            <MessageSquare className="h-6 w-6 text-gray-600" /> {/* Message Icon */}
-          </div>
 
-          <div className="border-l border-gray-200 h-12 mx-2" /> {/* Reduced mx-4 to mx-2 */}
 
-          {/* Email Dropdown */}
-          <div className="flex items-center space-x-6">
+          {/* Icons and Profile */}
+          <div className="flex items-center space-x-4 md:space-x-6">
+            <MessageSquare className="h-6 w-6 text-gray-600 hidden md:block" />
+
+            {/* Second Divider */}
+            <div className="hidden md:block border-l border-gray-200 h-12 mx-2" />
+
             <div className="relative inline-block">
-              {/* Bell Icon */}
-              <Bell className="w-7 h-7 text-gray-500" />
-
-              {/* Notification Badge */}
-              <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">
+              <Bell className="w-6 h-6 md:w-7 md:h-7 text-gray-500" />
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">
                 3
               </span>
             </div>
 
-            {/* Avatar */}
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
 
-            {/* Email Dropdown */}
-            <Card className="w-[250px] shadow-none border-none">
-              <CardContent className="p-2"> {/* Reduced padding */}
-                <form>
-                  <div className="grid items-center gap-1"> {/* Reduced spacing */}
-                    <div className="flex flex-col space-y-1">
-                      <Label htmlFor="framework" className="text-xs font-semibold">
-                        Tharonyx
-                      </Label>
-                      <Select>
-                        <SelectTrigger id="framework" className="border-none p-1 h-8 text-sm"> {/* Adjusted padding & height */}
-                          <SelectValue placeholder="tharonyx@gmail.com" />
-                        </SelectTrigger>
-                        <SelectContent position="popper">
-                          <SelectItem value="next">Next.js</SelectItem>
-                          <SelectItem value="sveltekit">SvelteKit</SelectItem>
-                          <SelectItem value="astro">Astro</SelectItem>
-                          <SelectItem value="nuxt">Nuxt.js</SelectItem>
-                        </SelectContent>
-                      </Select>
+            {/* Email Dropdown (Hidden on Small Screens) */}
+            <div className="hidden md:block">
+              <Card className="w-[200px] md:w-[250px] shadow-none border-none">
+                <CardContent className="p-2">
+                  <form>
+                    <div className="grid items-center gap-1">
+                      <div className="flex flex-col space-y-1">
+                        <Label htmlFor="email" className="text-xs font-semibold">
+                          Tharonyx
+                        </Label>
+                        <Select>
+                          <SelectTrigger id="email" className="border-none p-1 h-8 text-sm">
+                            <SelectValue placeholder="tharonyx@gmail.com" />
+                          </SelectTrigger>
+                          <SelectContent position="popper">
+                            <SelectItem value="next">Next.js</SelectItem>
+                            <SelectItem value="sveltekit">SvelteKit</SelectItem>
+                            <SelectItem value="astro">Astro</SelectItem>
+                            <SelectItem value="nuxt">Nuxt.js</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </nav>
-        {/* Horizontal line under the navbar */}
-        <div className="border-t border-gray-200 mt-0" />
       </div>
+
       <div className="flex">
         {/* <!-- Sidebar Section with a fixed width --> */}
         <div className=" w-80">

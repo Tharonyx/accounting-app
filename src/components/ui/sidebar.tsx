@@ -1,11 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Home, User, Settings, FileText, File, ChevronLeft, ChevronRight } from "lucide-react"; // You can adjust the icons as per your needs
+import {
+  Home,
+  User,
+  Settings,
+  FileText,
+  File,
+  ChevronLeft,
+  ChevronRight,
+  MessageSquare,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils"; // This is your utility function to handle conditional classnames, adjust if necessary
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"; // Importing avatar component
-import { MessageSquare } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -23,25 +30,29 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className={`flex flex-col text-black ${isCollapsed ? "w-16" : "w-[19.4rem]"} h-full transition-width duration-300 ml-0 border-r border-gray-300`}>
-      <div className="flex justify-between items-center p-4 mb-4">
-        <div>
-          <MessageSquare className="h-6 w-6 text-gray-600" />
-        </div>
-        <div className="text-xl font-bold ">Task</div>
-        <div><Badge className="text-white bg-blue-700">2</Badge></div>
+    <div
+      className={`fixed md:relative flex flex-col text-black ${
+        isCollapsed ? "w-16" : "w-[19.4rem]"
+      } h-full transition-all duration-300 border-r border-gray-300 bg-white shadow-md`}
+    >
+      {/* Header */}
+      <div className="flex justify-between items-center p-4">
+        <MessageSquare className="h-6 w-6 text-gray-600" />
+        {!isCollapsed && <div className="text-xl font-bold">Task</div>}
+        <Badge className="text-white bg-blue-700">2</Badge>
       </div>
 
-      {/* Horizontal Line under Task */}
+      {/* Divider */}
       <div className="border-t border-gray-200" />
 
-      <div className="flex-grow">
-        <ul className="space-y-4 mt-4">
+      {/* Navigation Menu */}
+      <div className="flex-grow mt-4">
+        <ul className="space-y-2">
           {menuItems.map((item) => (
             <li key={item.name}>
               <a
                 href={item.href}
-                className="flex items-center p-4 hover:bg-gray-300 rounded-2xl"
+                className="flex items-center p-3 hover:bg-gray-200 rounded-lg transition-all duration-200"
               >
                 <span className="mr-4">{item.icon}</span>
                 {!isCollapsed && <span>{item.name}</span>}
@@ -50,6 +61,14 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
+
+      {/* Toggle Button */}
+      <button
+        onClick={toggleSidebar}
+        className="absolute right-[-12px] top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300 transition-all"
+      >
+        {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
+      </button>
     </div>
   );
 };
