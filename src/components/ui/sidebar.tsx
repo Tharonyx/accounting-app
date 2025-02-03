@@ -31,9 +31,8 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`fixed md:relative flex flex-col text-black ${
-        isCollapsed ? "w-16" : "w-[19.4rem]"
-      } h-full transition-all duration-300 border-r border-gray-300 bg-white shadow-md`}
+      className={`fixed md:relative flex flex-col text-black h-full bg-white shadow-md border-r border-gray-300 transition-all duration-300
+        ${isCollapsed ? "w-16" : "w-64"} md:w-64 `}
     >
       {/* Header */}
       <div className="flex justify-between items-center p-4">
@@ -65,7 +64,7 @@ const Sidebar = () => {
       {/* Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className="absolute right-[-12px] top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300 transition-all"
+        className="absolute right-[-12px] top-1/2 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full shadow-md hover:bg-gray-300 transition-all md:hidden"
       >
         {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
       </button>
