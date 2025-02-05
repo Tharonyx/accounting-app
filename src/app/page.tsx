@@ -19,8 +19,8 @@ export default function Navbar() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
   return (
-    <div className="">
-      <div className="bg-white shadow-none ">
+    <div>
+      <div className="bg-white shadow-none">
         <nav className="flex flex-wrap items-center justify-between gap-4 md:gap-0 p-4">
           {/* Company Dropdown */}
           <div className="flex-shrink-0 w-full md:w-auto">
@@ -49,7 +49,6 @@ export default function Navbar() {
               </CardContent>
             </Card>
           </div>
-
           {/* First Divider */}
           <div className="hidden md:block border-l border-gray-200 h-12 mx-2" />
 
@@ -116,20 +115,20 @@ export default function Navbar() {
 
       <div className="flex flex-col md:flex-row">
         {/* Sidebar Section with a fixed width */}
-        <div className="w-full md:w-80 md:ml-6 sm:ml-0 ml-0">
+        <div className="w-full md:w-80">
           <Sidebar/>
         </div>
 
         {/* Middle Section (Invoices) takes up remaining space */}
-        <div className="flex-1 border-r mr-0 p-4 ml-16 md:ml-0">
-          <div className="ml-0 md:ml-4 mt-4">
+        <div className="flex-1 border-r mr-0 p-4 ">
+          <div className="ml-16 md:ml-4 mt-4">
             <p className="text-gray-600 text-sm ">
               Invoices <span className="text-gray-400 text-sm ml-4">create new invoice</span>
             </p>
             <h1 className="text-2xl font-semibold mb-2">Create New Invoice</h1>
           </div>
           <div className="-mx-2 border-t border-gray-200 mt-0" />
-          <div className="flex flex-col md:flex-row justify-between mt-9 mb-9">
+          <div className="flex flex-col md:flex-row justify-between mt-9 mb-9 ml-16 md:ml-4">
             <div className="w-full md:w-[180px] mb-4 md:mb-0">
               <Card className="shadow-none rounded-xl">
                 <CardContent className="p-2">
@@ -184,7 +183,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className="-mx-2 border-t border-gray-200 mt-0" />
-          <div className="mt-4">
+          <div className="mt-4 ml-16 md:ml-4">
             <h1 className="text-[.7rem] font-semibold text-gray-500">MY DETAILS</h1>
             <div className="mt-8 ml-0 md:ml-8">
               <div className="flex justify-between">
@@ -209,7 +208,7 @@ export default function Navbar() {
             <div>
             </div>
           </div>
-          <div>
+          <div className="ml-16 md:ml-4">
             <div>
               <h2 className="text-[.7rem] font-semibold text-gray-500 mt-8">INVOICE DETAILS</h2>
             </div>
@@ -268,7 +267,7 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="ml-16 md:ml-4">
             <div>
               <div>
                 <h2 className="text-[.7rem] font-semibold text-gray-500 mt-8">DATES</h2>
@@ -340,7 +339,7 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-          <div className="flex gap-2 justify-between mr-3 mt-4">
+          <div className="flex gap-2 justify-between mr-3 mt-4 ml-16 md:ml-4">
             <Badge className="border border-gray-300 rounded-xl p-2 text-white bg-black text-base">Badge 1</Badge>
             <Badge className="border border-gray-300 rounded-xl p-2 text-gray-400 bg-gray-200 text-base">Badge 2</Badge>
             <Badge className="border border-gray-300 rounded-xl p-2 text-gray-400 bg-gray-200 text-base">Badge 3</Badge>
@@ -349,7 +348,7 @@ export default function Navbar() {
         </div>
 
         {/* Right Section takes up remaining space */}
-        <div className="flex-1 p-4 ml-16 md:ml-0">
+        <div className="flex-1 p-4 ml-16 md:ml-4">
           <div className="m-0 md:m-8 border-0 shadow-md bg-white p-4">
             <div className="flex flex-col md:flex-row justify-between">
               <div>
